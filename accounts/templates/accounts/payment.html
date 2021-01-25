@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/>
+<br/>
+<h4>Card Details of {{name}} {{surname}}</h4>
+<form method="POST" action="{% url 'feedback' %}">
+{% csrf_token %}
+<div class="form-outline mb-4">
+    <input type="text"  class="form-control" required/>
+    <label class="form-label">Card Number</label>
+</div>
+<div class="form-outline mb-4">
+    <input type="text"  class="form-control" required/>
+    <label class="form-label">CVV</label>
+</div>
+<div class="form-outline mb-4">
+    <input type="text"  class="form-control" required/>
+    <label class="form-label">Card holder</label>
+</div>
+         <input type="hidden" value={{name}} name="firstname">
+         <input type="hidden" value={{surname}} name="lastname">
+         <input type="hidden" value={{mob}} name="mobile">
+         <input type="hidden" value={{date}} name="date">
+         <input type="hidden" value={{cost}} name="price">
+         <input type="hidden" value={{takeoff}} name="takeoff">
+         <input type="hidden" value={{land}} name="land">
+         <input type="hidden" value={{source}} name="source">
+         <input type="hidden" value={{destination}} name="destination">
+         <input type="hidden" value={{mailid}} name="mailid">
+         <input type="hidden" value={{gender}} name="gender">
+    <input class="btn btn-primary btn-block" type="submit" value="Make Payment"/>
+</form>
+{% endblock %}

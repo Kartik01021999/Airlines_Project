@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+<head>
+    {% load staticfiles %}
+    <style>
+        body{
+        background-image:url("../../static/booking.png");
+        background-size:cover;
+        }
+        .myform{
+        width:50%;
+        padding:12px 20px;
+        margin:8px 0;
+        box-sizing:border-box;
+        }
+    </style>
+</head>
+<body>
+<h2>Welcome {{name}},</h2>
+<form method="POST" action="{% url 'searchflights' %}">
+    {% csrf_token %}
+    Source:
+    <br/>
+    <select name="source" required class="myform">
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Amsterdam">Amsterdam</option>
+    </select>
+    <br/>
+    Destination:
+    <br/>
+     <select name="destination" required class="myform">
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Amsterdam">Amsterdam</option>
+    </select>
+    <br/>
+    Email-id:
+    <br/>
+    <input type="text" name="customer_mail_id" autocomplete="off" class="myform"/>
+    <br/>
+    Date:
+    <br/>
+    <input type="date" name="date" required class="myform"/>
+    <br/>
+    <br/>
+    <input class="btn btn-primary" type="submit" value="Search Flights" name="serachflights"/>
+</form>
+</body>
+</html>
+
+{% endblock %}

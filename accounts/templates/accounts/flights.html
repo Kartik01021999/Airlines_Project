@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+<head>
+    {% load staticfiles %}
+    <style>
+        .myDiv {
+        border:5px outset white;
+        background-color: lightblue;
+        margin: 20px;
+        height: 150px;
+        text-align:center;
+        }
+        .logo{
+        height:40px;
+        width:40px;
+        margin:20px;
+        }
+        .button{
+        background-color: yellow;
+        text-align:right;
+        border:none;
+        float:right;
+        margin: 10px;
+        font-size:20px;
+        border-radius:8px;
+        padding:16px;
+        }
+    </style>
+</head>
+<body>
+<br>
+<br>
+<h4>Showing flights from {{source}} to {{destination}} :</h4>
+{% for s in routes|slice:"0:no_of_flights" %}
+ <div class="myDiv">
+     <div class="logo"><img src="{% static 'aeroplane_logo.png' %}"></div>
+     <h5>{{ s.Start }} - {{ s.End }} non-stop Rs.{{s.Price}}
+         <form method="post" action="{% url 'BookTickets' %}">
+          {% csrf_token %}
+         <input type="hidden" value={{s.Price}} name="price">
+         <input type="hidden" value={{s.Source}} name="source">
+         <input type="hidden" value={{s.destination}} name="destination">
+         <input type="hidden" value={{s.Start}} name="Start">
+         <input type="hidden" value={{s.End}} name="End">
+         <input type="hidden" value={{date}} name="date">
+         <input class="button" type="submit" value="BookNow">
+        </form>
+     </h5>
+ </div>
+{% endfor %}
+</body>
+</html>
+{% endblock %}

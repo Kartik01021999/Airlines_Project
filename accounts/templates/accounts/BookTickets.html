@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+<head>
+    {% load staticfiles %}
+    <style>
+    </style>
+</head>
+<body>
+<br/>
+<br/>
+<h2>Ticket Details</h2>
+<br/>
+<i style="color:red">*20KG Checkin,7KG handbag<br>The baggage information is just for reference.Please Check with airline before check-in.For more information,visit the airline's official website.</i>
+<form method="POST" action="{% url 'payment' %}">
+    {% csrf_token %}
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control" name="firstname" autocomplete="off" required/>
+        <label class="form-label">First name</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control" name="lastname" autocomplete="off" required/>
+        <label class="form-label">Last name</label>
+      </div>
+    </div>
+  </div>
+
+ <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control" name="mailid" autocomplete="off" required/>
+        <label class="form-label">Email_id</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <select class="form-control" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <label class="form-label">Gender</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Source input -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control" name="source" value={{source}} readonly>
+        <label class="form-label">Source</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control" name="destination" value={{destination}} readonly>
+        <label class="form-label">Destination</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Price input -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control"  name="price" value={{cost}} readonly />
+        <label class="form-label">Price(INR)</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control" name="mobilenumber" autocomplete="off" required/>
+        <label class="form-label">Mobile Number</label>
+      </div>
+    </div>
+  </div>
+
+     <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control" name="takeoff" value={{Takeoff}} readonly>
+        <label class="form-label">Timing</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text"  class="form-control" name="land" value={{land}} readonly>
+      </div>
+    </div>
+  </div>
+     <div class="form-outline mb-4">
+    <input type="date"  class="form-control" name="date" value={{date}} readonly>
+    <label class="form-label">Date</label>
+  </div>
+
+  <!-- Submit button -->
+   <input class="btn btn-primary btn-block" type="submit" value="Pay"/>
+
+</form>
+</body>
+</html>
+
+{% endblock %}

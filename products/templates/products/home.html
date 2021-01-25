@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+<head>
+    {% load staticfiles %}
+    <style>
+        body{
+        background-image:url("static/backgroundimg.png");
+        background-size:cover;
+        }
+    </style>
+</head>
+<body>
+<br>
+<br>
+<h2>Welcome Traveller,</h2>
+<p style="color:Black;font-size:20px">Traveling can be carefree or action filled, it can be budget friendly or lavish, but either way,<br> I believe that domestic and international travel are the best investments you can make in <br>yourself. Getting immersed in a new place can be a culture shock at first, but it forces a<br> person out of their comfort zone, opening the doors for growth.</p>
+<a href="{% url 'login' %}"><img src="{% static 'book_now_icon.png' %}" width="400" height="150" style="float:right"></a>
+</body>
+</html>
+
+{% endblock %}

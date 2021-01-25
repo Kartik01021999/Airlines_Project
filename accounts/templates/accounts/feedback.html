@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+<head>
+    {% load staticfiles %}
+    <style>
+        body{
+        background-image:url("../../static/feedbacklogo.png");
+        background-size:cover;
+        }
+    </style>
+</head>
+<body>
+<br>
+<br>
+<h2 style="color:white">Please check your mail for confirmation of bookings.</h2>
+<br/>
+<h3 style="color:white">Do share your feedback:</h3>
+<br/>
+<textarea rows="2" cols="50" style="background-color:#ccf5ff"></textarea>
+</body>
+</html>
+
+{% endblock %}
